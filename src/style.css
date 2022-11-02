@@ -8,7 +8,8 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
-  --dark-blue: #000050;
+  --dark-gray-bg: #111;
+  --dark-blue-bg: #000050;
   --colossus-color: #ff978d;
   --valkyrie-color: #ffc478;
   --weaver-color: #eaabff;
@@ -149,6 +150,7 @@ label:has(.form-input) {
   text-transform: capitalize;
   text-align: center;
   color: #fff;
+  border-bottom: 1px solid var(--dark-gray-bg);
   transition: all .15s ease-in-out;
   text-decoration: none;
 }

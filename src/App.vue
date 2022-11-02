@@ -150,7 +150,7 @@ let showDescription = (event, description) => {
             <!-- Next Steps: make classes and race sections -->
             <!-- @click="showDescription($event, origin.originDescription)" -->
             <div class="col-xs-12 creation-section">
-              <h3 class="input-title">Choose Your Race: </h3>
+              <h3 class="input-title">Choose Your Origin: </h3>
                 <div class="row">
                   <div class="col-2">
                   <div class="row origin-btn-container">
