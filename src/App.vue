@@ -79,27 +79,9 @@ const addTrait = () => {
   input_content.value = ''
   input_category.value = null
 }
-  const activate = (el) => {
-    console.log(el)
-    active_el = el;
-  }
+  const activeOrigin = ref(null);
+
 let showDescription = (event, description) => {
-  // let targetId = document.getElementById(event.currentTarget.id)
-  // let currentlyActive = document.getElementsByClassName("active")
-  // if(currentlyActive.length > 0){
-    // currentlyActive.classList.replace("active", "")
-    // currentlyActive[0].className = current[0].className.replace("active", "");
-    // targetId.classList.add("active")
-    // console.log(currentlyActive)
-    // console.log(targetId)
-    // console.log('success')
-  // }
-  // console.log(currentlyActive)
-  // targetId.className += "active"
-  
-  
-  
-  
   
   let btnContainer = document.getElementById("origin-btn-container")
   let btns = document.getElementsByClassName("origin-button")
@@ -111,8 +93,6 @@ let showDescription = (event, description) => {
 
   let originText = document.createTextNode(description)
   originParagraph.appendChild(originText)
-
-
   
 }
 
@@ -178,9 +158,9 @@ let showDescription = (event, description) => {
                       :id="`${origin.originRace}-button`" 
                       class="col-12 role-thumb origin-button"  
                       v-for="origin in charOrigins" 
-                      @click="`activate(${origin.originNumber})`"
-                      :class="`{ active : active_el == ${origin.originNumber}}`"
-                      :key="origin.originRace"
+                      :key="origin"
+                      :class="{ 'active' : activeOrigin == origin}"
+                      @click="activeOrigin = origin"
                       >
                       {{origin.originRace}}
                     </a>
