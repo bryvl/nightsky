@@ -1,7 +1,21 @@
 <script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
+
+// **************NOTE********************** //
+// REMOVING SETUP FROM <script setup> makes any code that is not inside the export default object not appear
+// Keeping setup however makes the app not render as it is incompatible with export default
+// learn to either:
+// - work with setup OR
+// - create routes with export default (will likely go this route)
+
+
 import {ref, onMounted, computed, watch} from 'vue'
+import StartScreen from './routes/startScreen.vue'
+import NotFound from './routes/NotFound.vue'
+
+const routes = {
+  '/startscreen' : StartScreen
+}
+
 // this characters 
 // const characters = ref([])
 const charTraits = ref([])
@@ -93,8 +107,26 @@ let showDescription = (event, description) => {
 
   let originText = document.createTextNode(description)
   originParagraph.appendChild(originText)
-  
+
 }
+
+// export default {
+//   data() {
+//     return {
+//       currentPath: window.location.hash
+//     }
+//   },
+//   computed: {
+//     currentView() {
+//       return routes[this.currentPath.slice(1) || '/'] || NotFound
+//     }
+//   },
+//   onMounted() {
+//     window.addEventListener('hashchange', () => {
+// 		  this.currentPath = window.location.hash
+// 		})
+//   }
+// }
 
 </script>
 
