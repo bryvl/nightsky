@@ -162,6 +162,16 @@ label:has(.form-input) {
   border-bottom: 1px solid #fff;
   text-decoration: none;
 }
+
+.origin-submit-col {
+  padding: 25px;
+  text-align: center;
+  color: white;
+}
+.origin-submit {
+  text-decoration: none;
+}
+
 .role-card {
   /* padding: 15px; */
   margin: 0 auto;

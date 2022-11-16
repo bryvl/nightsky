@@ -95,17 +95,15 @@ const addTrait = () => {
 }
   const activeOrigin = ref(null);
 
-let showDescription = (event, description) => {
-  
-  let btnContainer = document.getElementById("origin-btn-container")
-  let btns = document.getElementsByClassName("origin-button")
-  
-  
+let showDescription = (origin) => {
+
   let originParagraph = document.getElementById("origin-description")
   originParagraph.textContent = ""
 
+  let btnContainer = document.getElementById("origin-btn-container")
+  let btns = document.getElementsByClassName("origin-button")
 
-  let originText = document.createTextNode(description)
+  let originText = document.createTextNode(origin.originDescription)
   originParagraph.appendChild(originText)
 
 }
@@ -180,11 +178,10 @@ let showDescription = (event, description) => {
               </div>
             </div>
             <!-- Next Steps: make classes and race sections -->
-            <!-- @click="showDescription($event, origin.originDescription)" -->
             <div class="col-xs-12 creation-section">
               <h3 class="input-title">Choose Your Origin: </h3>
-                <div class="row">
-                  <div class="col-2">
+              <div class="row">
+                <div class="col-2">
                   <div class="row origin-btn-container">
                     <a 
                       :id="`${origin.originRace}-button`" 
@@ -192,7 +189,7 @@ let showDescription = (event, description) => {
                       v-for="origin in charOrigins" 
                       :key="origin"
                       :class="{ 'active' : activeOrigin == origin}"
-                      @click="activeOrigin = origin"
+                      @click="activeOrigin = origin; showDescription(origin)"
                       >
                       {{origin.originRace}}
                     </a>
@@ -200,6 +197,9 @@ let showDescription = (event, description) => {
                 </div>
                 <div class="col-10">
                   <p id="origin-description"></p>
+                </div>
+                <div class="col-12 origin-submit-col">
+                    <a class="origin-submit" :key="origin">So you are of the ?</a>
                 </div>
               </div>
               <label>
@@ -214,15 +214,15 @@ let showDescription = (event, description) => {
               <h3 class="input-title">Choose Your Class: </h3>
               <div class="row">
                 <div class="col-6 col-lg-2 role-card" v-for="role in charRoles">
-                <div class="row">
-                  <div class="col-12 role-thumb">
-                    <div class="role-thumb-wrapper">
-                      <img :src="role.roleThumb">
+                  <div class="row">
+                    <div class="col-12 role-thumb">
+                      <div class="role-thumb-wrapper">
+                        <img :src="role.roleThumb">
+                      </div>
+                      <h4 class="text-center" :class="`${role.roleName.toLowerCase()}-theme`">{{role.roleName}}</h4>
                     </div>
-                    <h4 class="text-center" :class="`${role.roleName.toLowerCase()}-theme`">{{role.roleName}}</h4>
                   </div>
-                </div>
-                <div :class="`${role.roleName.toLowerCase()}-theme-bg`"></div>
+                  <div :class="`${role.roleName.toLowerCase()}-theme-bg`"></div>
                 </div>
               </div>
             </div>
@@ -230,7 +230,6 @@ let showDescription = (event, description) => {
         </form>
       </div>
     </div>
-    
   </div>
 </template>
 
